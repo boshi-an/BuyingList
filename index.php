@@ -2,6 +2,12 @@
 <html>
 <?php include 'header.php'?>
 
+<?php
+	$label_name_map;
+	$products = get_types("drink_types");
+	while($row = mysqli_fetch_row($products)) $label_name_map[$row[1]] = $row[0];
+?>
+
 <section class="section section-lg section-hero section-shaped">
 	<div class="shape shape-style-1 shape-image" style="background-image: url(images/background.jpg); background-size:cover">
 		<span class="span-150"></span>
@@ -47,27 +53,28 @@
 					</div>
 				</div>
 				<hr>
-				<div class="card shadow">
-					<div class="card-body">
-						<span class="badge badge-pill badge-danger">
-							yzy
-						</span>
-						<span class="badge badge-pill badge-primary">
-							幽兰拿铁
-						</span>
-					</div>
-				</div>
-				</br>
-				<div class="card shadow">
-					<div class="card-body">
-						<span class="badge badge-pill badge-danger">
-							sjf
-						</span>
-						<span class="badge badge-pill badge-primary">
-							人间烟火
-						</span>
-					</div>
-				</div>
+				<?php 
+					$queue = get_request_queue("requests", 10);
+					while($row = mysqli_fetch_row($queue))
+					{
+						?>
+						<div class="card shadow">
+							<div class="card-body">
+								<span class="badge badge-pill badge-danger">
+									<?php echo($row[6]); ?>
+								</span>
+								<span class="badge badge-pill badge-primary">
+									<?php echo($label_name_map[$row[2]]); ?>
+								</span>
+								<span class="badge badge-pill badge-success">
+									<?php echo($row[5]); ?>
+								</span>
+							</div>
+						</div>
+						<br>
+						<?php
+					}
+				?>
 			</div>
 			<div class="col-sm-8">
 				<div class="card shadow">

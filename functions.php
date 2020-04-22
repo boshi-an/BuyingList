@@ -18,8 +18,15 @@ function establish_connection()
 function get_types($table_name)
 {
 	$conn = establish_connection();
-	$sql_command_qname = "SELECT name, label FROM $table_name";
-	return mysqli_query($conn, $sql_command_qname);
+	$sql_command = "SELECT name, label FROM $table_name";
+	return mysqli_query($conn, $sql_command);
+}
+
+function get_request_queue($table_name, $limit)
+{
+	$conn = establish_connection();
+	$sql_command = "SELECT * FROM $table_name order by request_id desc limit 0,$limit";
+	return mysqli_query($conn, $sql_command);
 }
 
 function print_message($left_message, $right_message, $type) //type = "warning" or "success"
