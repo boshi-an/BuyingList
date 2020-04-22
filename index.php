@@ -2,24 +2,6 @@
 <html>
 <?php include 'header.php'?>
 
-<?php 
-function get_types($table_name)
-{
-	$servername = "localhost";
-	$username = "root";
-	$password = "AnBS392854382";
-	$dbname = "my_database";
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	if (!$conn)
-	{
-		die("Connection failed: " . mysqli_connect_error());
-	}
-	mysqli_query($conn, "SET NAMES UTF8");
-	$sql_command_qname = "SELECT name, label FROM $table_name";
-	return mysqli_query($conn, $sql_command_qname);
-}
-?>
-
 <section class="section section-lg section-hero section-shaped">
 	<div class="shape shape-style-1 shape-image" style="background-image: url(images/background.jpg); background-size:cover">
 		<span class="span-150"></span>
@@ -155,13 +137,13 @@ function get_types($table_name)
 											<div class="mb-3">
 												<h4 class="text-uppercase font-bold">用户名</h4>
 											</div>
-											<input type="text" name="user_name" placeholder="比如: zyf" class="form-control form-control-alternative">
+											<input type="text" name="user_name" placeholder="比如: zyf" class="form-control form-control-alternative" required="required">
 										</p>
 										<p>
 											<div class="mb-3">
 												<h4 class="text-uppercase font-bold">密码</h4>
 											</div>
-											<input type="password" name="password" placeholder="比如: ******" class="form-control form-control-alternative">
+											<input type="password" name="password" placeholder="比如: ******" class="form-control form-control-alternative" required="required">
 										</p>
 										<hr>
 										<p>

@@ -19,5 +19,6 @@
 	<!-- CSS Files -->
 	<link href="./assets/css/argon-design-system.css?v=1.2.0" rel="stylesheet" />
 </head>
+<?php include "functions.php" ?>
 <body>
 	<main>
