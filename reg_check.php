@@ -11,6 +11,7 @@
 	{
 		die("Connection failed: " . mysqli_connect_error());
 	}
+	mysqli_query($conn, "SET NAMES UTF8");
 	$reg_name = $_POST['user_name'];
 	$reg_passwd = $_POST['password1'];
 	$reg_repeat = $_POST['password2'];

@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 <html>
 <?php include 'header.php'?>
+
+<?php 
+function get_types($table_name)
+{
+	$servername = "localhost";
+	$username = "root";
+	$password = "AnBS392854382";
+	$dbname = "my_database";
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	if (!$conn)
+	{
+		die("Connection failed: " . mysqli_connect_error());
+	}
+	mysqli_query($conn, "SET NAMES UTF8");
+	$sql_command_qname = "SELECT name, label FROM $table_name";
+	return mysqli_query($conn, $sql_command_qname);
+}
+?>
+
 <section class="section section-lg section-hero section-shaped">
 	<div class="shape shape-style-1 shape-image" style="background-image: url(images/background.jpg); background-size:cover">
 		<span class="span-150"></span>
@@ -72,7 +91,7 @@
 				<div class="card shadow">
 					<div class="card-body">
 						<div class="row row-grid justify-content-center">
-							<form action="" method="post" name="request">
+							<form action="buy.php" method="post" name="request">
 								<div class="content">
 									<div class="col">
 										<p>
@@ -85,36 +104,22 @@
 												<h4 class="text-uppercase font-bold">种类</h4>
 											</div>
 											<div class="row">
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_type_youlannatie" class="custom-control-input" id="customRadio1" checked=“” type="radio">
-													<label class="custom-control-label" for="customRadio1">
-														<span>幽兰拿铁</span>
-													</label>
-												</div>
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_type_zhengzhengzhiyuan" class="custom-control-input" id="customRadio1" type="radio">
-													<label class="custom-control-label" for="customRadio1">
-														<span>筝筝纸鸢</span>
-													</label>
-												</div>
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_type_renjianyanhuo" class="custom-control-input" id="customRadio1" type="radio">
-													<label class="custom-control-label" for="customRadio1">
-														<span>人间烟火</span>
-													</label>
-												</div>
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_type_guihuanong" class="custom-control-input" id="customRadio1" type="radio">
-													<label class="custom-control-label" for="customRadio1">
-														<span>桂花弄</span>
-													</label>
-												</div>
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_type_zhenxiangnatie" class="custom-control-input" id="customRadio1" type="radio">
-													<label class="custom-control-label" for="customRadio1">
-														<span>榛享拿铁</span>
-													</label>
-												</div>
+												<?php
+													$table = get_types("drink_types");
+													$initial = 1;
+													while($row = mysqli_fetch_row($table))
+													{
+														?>
+															<div class="custom-control custom-radio mb-3 col-sm-3">
+																<input name="custom_drink_type" class="custom-control-input" id="<?php echo($row[1]); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
+																<label class="custom-control-label" for="<?php echo($row[1]); ?>">
+																	<span><?php echo($row[0]); ?></span>
+																</label>
+															</div>
+														<?
+														$initial = 0;
+													}
+												?>
 											</div>
 										</p>
 										<p>
@@ -122,31 +127,29 @@
 												<h4 class="text-uppercase font-bold">温度</h4>
 											</div>
 											<div class="row">
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_temperature_cold" class="custom-control-input" id="customRadio2" checked=“” type="radio">
-													<label class="custom-control-label" for="customRadio2">
-														<span>冰</span>
-													</label>
-												</div>
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_temperature_mid" class="custom-control-input" id="customRadio2" type="radio">
-													<label class="custom-control-label" for="customRadio2">
-														<span>少冰</span>
-													</label>
-												</div>
-												<div class="custom-control custom-radio mb-3 col-sm-3">
-													<input name="drink_temperature_hot" class="custom-control-input" id="customRadio2" type="radio">
-													<label class="custom-control-label" for="customRadio2">
-														<span>热</span>
-													</label>
-												</div>
+												<?php
+													$table = get_types("drink_temperatures");
+													$initial = 1;
+													while($row = mysqli_fetch_row($table))
+													{
+														?>
+															<div class="custom-control custom-radio mb-3 col-sm-3">
+																<input name="custom_drink_temperature" class="custom-control-input" id="<?php echo($row[1]); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
+																<label class="custom-control-label" for="<?php echo($row[1]); ?>">
+																	<span><?php echo($row[0]); ?></span>
+																</label>
+															</div>
+														<?
+														$initial = 0;
+													}
+												?>
 											</div>
 										</p>
 										<p>
 											<div class="mb-3">
 												<h4 class="text-uppercase font-bold">备注</h4>
 											</div>
-											<textarea rows="8" cols="50" name="text" id="textarea" class="form-control" placeholder="备注" ></textarea>
+											<textarea rows="8" cols="50" name="addition" id="textarea" class="form-control" placeholder="备注" ></textarea>
 										</p>
 										<p>
 											<div class="mb-3">
@@ -165,7 +168,7 @@
 											<div class="nav-wrapper">
 												<ul class="nav nav-pills flex-column flex-md-row justify-content-center" id="tabs-icons-text" role="tablist">
 												<li class="nav-item">
-													<button type="button" class="btn btn-primary"> 提交订单 </button>
+													<input type="submit" class="btn btn-primary"></input>
 												</li>
 												<li class="nav-item">
 													<a href="index.php"><button type="button" class="btn btn-primary"> 取消购买 </button></a>
