@@ -28,7 +28,7 @@
 					<img src="images/avatar5.png" class="avatar" style="margin-bottom: 1rem; height: 100px; width: 100px;">
 					<h1 class="text-black"> Buying Lists </h1>
 					<hr/>
-					<p> <h3 class="text-white"> 在这里购买茶颜悦色，说不定有人会给你送过来 </h3> </p>
+					<p> <h3 class="text-black"> 在这里购买茶颜悦色，说不定有人会给你送过来 </h3> </p>
 				</div>
 			</div>
 		</div>
