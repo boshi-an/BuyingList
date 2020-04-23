@@ -43,15 +43,15 @@
 						</div>
 						<div class="row mb-3">
 							<h5 class="font-weight-bold">用户名：</h5>
-							<input type="text" name="user_name" placeholder="比如: zyf" class="form-control form-control-alternative">
+							<input type="text" name="user_name" placeholder="比如: zyf" class="form-control form-control-alternative" required="required">
 						</div>
 						<div class="row mb-3">
 							<h5 class="font-weight-bold">密码：</h5>
-							<input type="password" name="password1" placeholder="比如: zyfzyfzyf" class="form-control form-control-alternative">
+							<input type="password" name="password1" placeholder="比如: zyfzyfzyf" class="form-control form-control-alternative" required="required">
 						</div>
 						<div class="row mb-3">
 							<h5 class="font-weight-bold">确认密码：</h5>
-							<input type="password" name="password2" placeholder="比如: zyfzyfzyf" class="form-control form-control-alternative">
+							<input type="password" name="password2" placeholder="比如: zyfzyfzyf" class="form-control form-control-alternative" required="required">
 						</div>
 						<div class="row justify-content-center">
 							<input type="submit" class="btn btn-primary"> </input>
