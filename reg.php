@@ -18,7 +18,7 @@
 		<div class="col px-0">
 			<div class="row align-items-center justify-content-center">
 				<div class="col-lg-6 text-center">
-					<img src="images/avatar5.png" class="avatar" style="margin-bottom: 1rem; height: 100px; width: 100px;">
+					<img src="images/avatar5.png" class="avatar" style="margin-bottom: 1rem; height: 150px; width: 150px;">
 					<h1 class="text-black"> Buying Lists </h1>
 					<hr/>
 					<p> <h3 class="text-black"> 在这里购买茶颜悦色，说不定有人会给你送过来 </h3> </p>
