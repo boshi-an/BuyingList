@@ -38,7 +38,7 @@ function print_message($left_message, $right_message, $type) //type = "warning" 
 			<span class="alert-inner--icon"><i class="ni ni-bell-55"></i></span>
 			<span class="alert-inner--text"><strong><?php echo($left_message); ?></strong><?php echo($right_message); ?></span>
 			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">×</span>
+				<span aria-hidden="true">x</span>
 			</button>
 			</div>
 		</div>
