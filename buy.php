@@ -9,6 +9,7 @@
 	$qproduct_label = $_POST['custom_drink_type'];
 	$qproduct_temp = $_POST['custom_drink_temperature'];
 	$qproduct_addition = $_POST['addition'];
+	ini_set('date.timezone', 'Asia/Shanghai');
 	$qrequest_time = date("Y-m-d H:i:s");
 	$sql_command_quser = "SELECT name, password, id FROM users WHERE name='$qname'";
 	$buyer = mysqli_fetch_array(mysqli_query($conn, $sql_command_quser));
