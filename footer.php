@@ -5,12 +5,12 @@
 			<div class="row align-items-center justify-content-md-between">
 				<div class="col-md-6">
 					<div class="copyright">
-						Copyright © Buying List
+						<a href="github.com/totorato/BuyingList"> Copyright © Buying List </a>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<ul class="nav nav-footer justify-content-end">
-						boshi
+						author: boshi
 					</ul>
 				</div>
 			</div>

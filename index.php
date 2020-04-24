@@ -61,13 +61,13 @@
 						<div class="card shadow">
 							<div class="card-body">
 								<span class="badge badge-pill badge-danger">
-									<?php echo($row[6]); ?>
+									<small><?php echo($row[6]); ?></small>
 								</span>
 								<span class="badge badge-pill badge-primary">
-									<?php echo($label_name_map[$row[2]]); ?>
+									<small><?php echo($label_name_map[$row[2]]); ?></small>
 								</span>
 								<span class="badge badge-pill badge-success">
-									<?php echo($row[5]); ?>
+									<small><?php echo($row[5]); ?></small>
 								</span>
 							</div>
 						</div>
@@ -99,10 +99,11 @@
 													while($row = mysqli_fetch_row($table))
 													{
 														?>
-															<div class="custom-control custom-radio mb-3 col-sm-3">
+															<div class="custom-control custom-radio mb-3 col-sm-4">
 																<input name="custom_drink_type" class="custom-control-input" id="<?php echo($row[1]); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
 																<label class="custom-control-label" for="<?php echo($row[1]); ?>">
 																	<span><?php echo($row[0]); ?></span>
+																	<span><a href="baidu.com"> 详情 </a></span>
 																</label>
 															</div>
 														<?
