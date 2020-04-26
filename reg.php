@@ -54,7 +54,7 @@
 							<input type="password" name="password2" placeholder="比如: zyfzyfzyf" class="form-control form-control-alternative" required="required">
 						</div>
 						<div class="row justify-content-center">
-							<input type="submit" class="btn btn-primary"> </input>
+							<button type="submit" class="btn btn-primary">确认注册</button>
 							<a href="index.php"><button type="button" class="btn btn-primary"> 返回首页 </button></a>
 						</div>
 					</div>

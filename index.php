@@ -42,40 +42,6 @@
 <section class="section">
 	<div class="container">
 		<div class="row py-3">
-			<div class="col-sm-4">
-				<div class="card shadow">
-					<div class="card-body">
-						<div class="text-center">
-							<h2>
-								订单队列
-							</h2>
-						</div>
-					</div>
-				</div>
-				<hr>
-				<?php 
-					$queue = get_request_queue("requests", 10);
-					while($row = mysqli_fetch_row($queue))
-					{
-						?>
-						<div class="card shadow">
-							<div class="card-body">
-								<span class="badge badge-pill badge-danger">
-									<small><?php echo($row[6]); ?></small>
-								</span>
-								<span class="badge badge-pill badge-primary">
-									<small><?php echo($label_name_map[$row[2]]); ?></small>
-								</span>
-								<span class="badge badge-pill badge-success">
-									<small><?php echo($row[5]); ?></small>
-								</span>
-							</div>
-						</div>
-						<br>
-						<?php
-					}
-				?>
-			</div>
 			<div class="col-sm-8">
 				<div class="card shadow">
 					<div class="card-body">
@@ -103,7 +69,7 @@
 																<input name="custom_drink_type" class="custom-control-input" id="<?php echo($row[1]); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
 																<label class="custom-control-label" for="<?php echo($row[1]); ?>">
 																	<span><?php echo($row[0]); ?></span>
-																	<span><a href="baidu.com"> 详情 </a></span>
+																	<span><a href="https://www.baidu.com"> 详情 </a></span>
 																</label>
 															</div>
 														<?
@@ -158,7 +124,7 @@
 											<div class="nav-wrapper">
 												<ul class="nav nav-pills flex-column flex-md-row justify-content-center" id="tabs-icons-text" role="tablist">
 												<li class="nav-item">
-													<input type="submit" class="btn btn-primary"></input>
+													<button type="submit" class="btn btn-primary">提交订单</button>
 												</li>
 												<li class="nav-item">
 													<a href="index.php"><button type="button" class="btn btn-primary"> 取消购买 </button></a>
@@ -175,6 +141,40 @@
 						</div>
 					</div>
 				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="card shadow">
+					<div class="card-body">
+						<div class="text-center">
+							<h2>
+								订单队列
+							</h2>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<?php 
+					$queue = get_request_queue("requests", 10);
+					while($row = mysqli_fetch_row($queue))
+					{
+						?>
+						<div class="card shadow">
+							<div class="card-body">
+								<span class="badge badge-pill badge-danger">
+									<small><?php echo($row[6]); ?></small>
+								</span>
+								<span class="badge badge-pill badge-primary">
+									<small><?php echo($label_name_map[$row[2]]); ?></small>
+								</span>
+								<span class="badge badge-pill badge-success">
+									<small><?php echo($row[5]); ?></small>
+								</span>
+							</div>
+						</div>
+						<br>
+						<?php
+					}
+				?>
 			</div>
 		</div>
 	</div>

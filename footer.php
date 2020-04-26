@@ -5,7 +5,7 @@
 			<div class="row align-items-center justify-content-md-between">
 				<div class="col-md-6">
 					<div class="copyright">
-						<a href="github.com/totorato/BuyingList"> Copyright © Buying List </a>
+						<a href="https://www.github.com/totorato/BuyingList"> Copyright © Buying List </a>
 					</div>
 				</div>
 				<div class="col-md-6">
