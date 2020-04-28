@@ -38,7 +38,7 @@
 		$sql_command_insert = "INSERT INTO users (id, password, name, money, reg_time) VALUES
 			($id_max, '$reg_passwd', '$reg_name', 0, '$reg_time')";
 		mysqli_query($conn, $sql_command_insert);
-		print_message("Success!", "注册成功", "success");
+		print_message("Success!", "注册成功，请等待审核", "success");
 		?>
 		</div>
 		<div class="row justify-content-center mb-4">

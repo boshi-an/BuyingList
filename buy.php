@@ -23,6 +23,16 @@
 		<?
 		exit();
 	}
+	else if($buyer['confirmed'] != 1)
+	{
+		print_message("Warning!", "用户未通过审核，请等待审核!", "warning");
+		?>
+		<div class="row justify-content-center mb-4">
+			<a href="index.php"><button type="button" class="btn btn-primary"> 返回首页 </button></a>
+		</div>
+		<?
+		exit();
+	}
 	else if($buyer['password'] != $qpasswd)
 	{
 		print_message("Warning!", "密码错误!", "warning");
@@ -49,6 +59,7 @@
 			<a href="index.php"><button type="button" class="btn btn-primary"> 返回首页 </button></a>
 		</div>
 		<?
+		exit();
 	}
 ?>
 <?php include 'footer.php' ?>
