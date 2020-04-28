@@ -15,16 +15,14 @@ function establish_connection()
 	return $conn;
 }
 
-function get_types($table_name)
+function get_types($conn, $table_name)
 {
-	$conn = establish_connection();
 	$sql_command = "SELECT name, label FROM $table_name";
 	return mysqli_query($conn, $sql_command);
 }
 
-function get_request_queue($table_name, $limit)
+function get_request_queue($conn, $table_name, $limit)
 {
-	$conn = establish_connection();
 	$sql_command = "SELECT * FROM $table_name order by request_id desc limit 0,$limit";
 	return mysqli_query($conn, $sql_command);
 }

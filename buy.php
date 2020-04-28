@@ -40,8 +40,8 @@
 		$id_max = $last_request[0]+1;
 		$buyer_id = $buyer['id'];
 		$buyer_name = $buyer['name'];
-		$sql_command_insert = "INSERT INTO requests (request_id, user_id, product_label, product_temperature, product_addition, request_time, user_name) VALUES
-			($id_max, $buyer_id, '$qproduct_label', '$qproduct_temp', '$qproduct_addition', '$qrequest_time', '$buyer_name')";
+		$sql_command_insert = "INSERT INTO requests (request_id, user_id, user_name, product_label, product_temperature, product_addition, request_time, confirmed, confirm_time) VALUES
+			($id_max, $buyer_id, '$buyer_name', '$qproduct_label', '$qproduct_temp', '$qproduct_addition', '$qrequest_time', 0, '$qrequest_time')";
 		mysqli_query($conn, $sql_command_insert);
 		print_message("Success!", "购买成功!", "success");
 		?>

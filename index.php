@@ -4,7 +4,8 @@
 
 <?php
 	$label_name_map;
-	$products = get_types("drink_types");
+	$connection = establish_connection();
+	$products = get_types($connection, "drink_types");
 	while($row = mysqli_fetch_row($products)) $label_name_map[$row[1]] = $row[0];
 ?>
 
@@ -60,15 +61,15 @@
 											</div>
 											<div class="row">
 												<?php
-													$table = get_types("drink_types");
+													$table = get_types($connection, "drink_types");
 													$initial = 1;
-													while($row = mysqli_fetch_row($table))
+													while($row = mysqli_fetch_array($table))
 													{
 														?>
 															<div class="custom-control custom-radio mb-3 col-sm-4">
-																<input name="custom_drink_type" class="custom-control-input" id="<?php echo($row[1]); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
-																<label class="custom-control-label" for="<?php echo($row[1]); ?>">
-																	<span><?php echo($row[0]); ?></span>
+																<input name="custom_drink_type" class="custom-control-input" id="<?php echo($row['label']); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
+																<label class="custom-control-label" for="<?php echo($row['label']); ?>">
+																	<span><?php echo($row['name']); ?></span>
 																	<span><a href="https://www.baidu.com"> 详情 </a></span>
 																</label>
 															</div>
@@ -84,15 +85,15 @@
 											</div>
 											<div class="row">
 												<?php
-													$table = get_types("drink_temperatures");
+													$table = get_types($connection, "drink_temperatures");
 													$initial = 1;
-													while($row = mysqli_fetch_row($table))
+													while($row = mysqli_fetch_array($table))
 													{
 														?>
 															<div class="custom-control custom-radio mb-3 col-sm-3">
-																<input name="custom_drink_temperature" class="custom-control-input" id="<?php echo($row[1]); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
-																<label class="custom-control-label" for="<?php echo($row[1]); ?>">
-																	<span><?php echo($row[0]); ?></span>
+																<input name="custom_drink_temperature" class="custom-control-input" id="<?php echo($row['label']); ?>" value="<?php echo($row[1]); ?>" type="radio" <?php if($initial) echo("checked=''"); ?> >
+																<label class="custom-control-label" for="<?php echo($row['label']); ?>">
+																	<span><?php echo($row['name']); ?></span>
 																</label>
 															</div>
 														<?
@@ -154,20 +155,20 @@
 				</div>
 				<hr>
 				<?php 
-					$queue = get_request_queue("requests", 10);
-					while($row = mysqli_fetch_row($queue))
+					$queue = get_request_queue($connection, "requests", 10);
+					while($row = mysqli_fetch_array($queue))
 					{
 						?>
 						<div class="card shadow">
 							<div class="card-body">
 								<span class="badge badge-pill badge-danger">
-									<small><?php echo($row[6]); ?></small>
+									<small><?php echo($row['user_name']); ?></small>
 								</span>
 								<span class="badge badge-pill badge-primary">
-									<small><?php echo($label_name_map[$row[2]]); ?></small>
+									<small><?php echo($label_name_map[$row['product_label']]); ?></small>
 								</span>
 								<span class="badge badge-pill badge-success">
-									<small><?php echo($row[5]); ?></small>
+									<small><?php echo($row['request_time']); ?></small>
 								</span>
 							</div>
 						</div>
