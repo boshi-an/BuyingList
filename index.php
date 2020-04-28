@@ -155,9 +155,15 @@
 				</div>
 				<hr>
 				<?php 
-					$queue = get_request_queue($connection, "requests", 10);
+					$queue = get_request_queue($connection, "requests", 6);
 					while($row = mysqli_fetch_array($queue))
 					{
+						if($row['confirmed'] == 0) {$status = "未处理"; $color = "primary";}
+						else if($row['confirmed'] == 1) {$status = "在路上了"; $color = "info";}
+						else if($row['confirmed'] == 2) {$status = "已送达"; $color = "success";}
+						else if($row['confirmed'] == -1) {$status = "被拒绝购买"; $color = "default";}
+						else if($row['confirmed'] == -2) {$status = "丢了或者被买家拒收"; $color = "default";}
+						else echo("出现一个错误：位置的状态代码。");
 						?>
 						<div class="card shadow">
 							<div class="card-body">
@@ -167,8 +173,12 @@
 								<span class="badge badge-pill badge-primary">
 									<small><?php echo($label_name_map[$row['product_label']]); ?></small>
 								</span>
+								<br>
 								<span class="badge badge-pill badge-success">
 									<small><?php echo($row['request_time']); ?></small>
+								</span>
+								<span class="badge badge-pill badge-<?php echo($color); ?>">
+									<small><?php echo($status); ?></small>
 								</span>
 							</div>
 						</div>
