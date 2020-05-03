@@ -112,7 +112,7 @@
 											<div class="mb-3">
 												<h4 class="text-uppercase font-bold">用户名</h4>
 											</div>
-											<input type="text" name="user_name" placeholder="比如: zyf" class="form-control form-control-alternative" required="required">
+											<input type="text" name="user_name" placeholder="比如: g2017-24班-zyf" class="form-control form-control-alternative" required="required">
 										</p>
 										<p>
 											<div class="mb-3">
@@ -163,7 +163,7 @@
 						else if($row['confirmed'] == 2) {$status = "已送达"; $color = "success";}
 						else if($row['confirmed'] == -1) {$status = "被拒绝购买"; $color = "default";}
 						else if($row['confirmed'] == -2) {$status = "丢了或者被买家拒收"; $color = "default";}
-						else echo("出现一个错误：位置的状态代码。");
+						else echo("出现一个错误：未知的状态代码。");
 						?>
 						<div class="card shadow">
 							<div class="card-body">

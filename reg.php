@@ -43,7 +43,7 @@
 						</div>
 						<div class="row mb-3">
 							<h5 class="font-weight-bold">用户名：</h5>
-							<input type="text" name="user_name" placeholder="比如: zyf" class="form-control form-control-alternative" required="required">
+							<input type="text" name="user_name" placeholder="格式为年级-班级-姓名,如g2017-24班-zyf" class="form-control form-control-alternative" required="required">
 						</div>
 						<div class="row mb-3">
 							<h5 class="font-weight-bold">密码：</h5>

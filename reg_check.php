@@ -35,8 +35,8 @@
 	{
 		$result = mysqli_fetch_array(mysqli_query($conn, "SELECT MAX(id) FROM users"));
 		$id_max = $result[0]+1;
-		$sql_command_insert = "INSERT INTO users (id, password, name, money, reg_time) VALUES
-			($id_max, '$reg_passwd', '$reg_name', 0, '$reg_time')";
+		$sql_command_insert = "INSERT INTO users (id, password, name, money, reg_time, confirmed) VALUES
+			($id_max, '$reg_passwd', '$reg_name', 0, '$reg_time', 0)";
 		mysqli_query($conn, $sql_command_insert);
 		print_message("Success!", "注册成功，请等待审核", "success");
 		?>
